@@ -7,8 +7,8 @@ fun main() {
     checkType(course)
     checkType(course.author)
     castNumber(1.0)
-    castNumber(1) // ClassCastException
-    castNumber("2") // ClassCastException
+    castNumber(1)
+    castNumber("2") // no ClassCastException due to ? use
 }
 
 fun checkType(target: Any) {
@@ -20,6 +20,8 @@ fun checkType(target: Any) {
 
 fun castNumber(target: Any) {
     when (target) {
-        target as Double -> println("cast as a Double")
+        // ? - safe operator only allows the cast to happen if it is possible
+        target as? Double -> println("cast as a Double")
+        target as? Int -> println("cast as a Int")
     }
 }

@@ -4,8 +4,16 @@ package com.finnimcfinger.classes
 data class Course(
     val id: Int,
     val name: String,
-    val author: String
+    val author: String,
+    val category: CourseCategory = CourseCategory.DEVELOPMENT
 )
+
+enum class CourseCategory {
+    DEVELOPMENT,
+    BUSINESS,
+    DESIGN,
+    MARKETING
+}
 
 fun main() {
     val course1 = Course(1, "Course Name", "Marty McFly")
@@ -18,4 +26,6 @@ fun main() {
      */
     val course3 = course1.copy(id = 3)
     println(course3)
+    val businessCourse = Course(2, "Somehow I Manage", "Michael G. Scott", CourseCategory.BUSINESS)
+    println(businessCourse)
 }

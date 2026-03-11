@@ -21,6 +21,12 @@ class Student(name: String): User(name) {
         println("Student class login")
         super.login()
     }
+
+    // provides interfaces for static access
+    companion object {
+        const val MAX_COURSE_COUNT = 10
+        fun country() = "USA"
+    }
 }
 
 class Instructor(name: String): User(name) {
@@ -34,6 +40,8 @@ fun main() {
     val student = Student("Marty")
     student.login()
     println("${student.title} ${student.name} logged in? ${student.isLoggedIn}")
+    println(Student.MAX_COURSE_COUNT)
+    println(Student.country())
     val instructor = Instructor("Doc")
     instructor.login()
     println("${instructor.title} ${instructor.name} logged in? ${instructor.isLoggedIn}")

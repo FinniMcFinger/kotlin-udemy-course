@@ -11,10 +11,12 @@ fun main() {
     val courses = courseList()
     val developmentPredicate = { c: Course -> c.category == CourseCategory.DEVELOPMENT }
     val designPredicate = { c: Course -> c.category == CourseCategory.DESIGN }
+
     println("Development Courses:")
     exploreFilter(courses, developmentPredicate)
     println("Design Courses:")
     exploreFilter(courses, designPredicate)
+
     println("Development Course Names/Categories:")
     exploreMap(courses, developmentPredicate)
     println("Design Course Names/Categories:")
@@ -30,6 +32,8 @@ fun main() {
 
     val kafkaCourses = exploreFlatMap(courses, KAFKA)
     println("kafka courses: $kafkaCourses")
+
+    exploreHashMap()
 }
 
 fun exploreFilter(courses: MutableList<Course>, predicate: (Course) -> Boolean) {
@@ -52,4 +56,19 @@ fun exploreFlatMap(courses: MutableList<Course>, topic: String): List<String> {
             it == topic
         } .map { courseName }
     }
+}
+
+fun exploreHashMap() {
+    val map = mutableMapOf("Finni" to 44, "Chewbear" to 30)
+    map.forEach { (key, value) -> println("$key - $value") }
+    val finni = map["Finni"]
+    println("Finni: $finni")
+    val missing = map.getOrElse("Marty") { 24 }
+    println("Marty: $missing")
+    val isPresent = map.containsKey("Marty")
+    println("Marty present in map? $isPresent")
+    val longKeys = map.filterKeys { it.length > 5 } .map { it.key.uppercase()}
+    println("Long keys: $longKeys")
+    val maxAge = map.maxByOrNull { it.value }
+    println("max age: ${maxAge?.value}")
 }

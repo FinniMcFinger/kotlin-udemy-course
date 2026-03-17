@@ -34,6 +34,8 @@ fun main() {
     println("kafka courses: $kafkaCourses")
 
     exploreHashMap()
+
+    collectionsNullability()
 }
 
 fun exploreFilter(courses: MutableList<Course>, predicate: (Course) -> Boolean) {
@@ -71,4 +73,15 @@ fun exploreHashMap() {
     println("Long keys: $longKeys")
     val maxAge = map.maxByOrNull { it.value }
     println("max age: ${maxAge?.value}")
+}
+
+fun collectionsNullability() {
+    var list: List<String>? = null
+    list?.forEach { println(it) }
+    list = mutableListOf()
+    list.add("marty")
+    list.forEach { println(it) }
+    var nullItems: List<String?> = listOf("marty", null, "doc")
+    nullItems.forEach { println(it?.length) }
+    nullItems.filterNotNull().forEach { println(it.length) }
 }

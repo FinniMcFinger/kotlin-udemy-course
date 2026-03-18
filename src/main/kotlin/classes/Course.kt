@@ -2,10 +2,10 @@ package com.finnimcfinger.classes
 
 // declaring a class as data generates equals(), hashCode(), and toString() for the class; requires primary constructor
 data class Course(
-    val id: Int,
-    val name: String,
-    val author: String,
-    val category: CourseCategory = CourseCategory.DEVELOPMENT
+    var id: Int,
+    var name: String,
+    var author: String,
+    var category: CourseCategory = CourseCategory.DEVELOPMENT
 )
 
 enum class CourseCategory {

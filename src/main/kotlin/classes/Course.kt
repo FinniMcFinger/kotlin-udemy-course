@@ -1,5 +1,7 @@
 package com.finnimcfinger.classes
 
+import com.finnimcfinger.JavaCourse
+
 // declaring a class as data generates equals(), hashCode(), and toString() for the class; requires primary constructor
 data class Course(
     var id: Int,
@@ -28,4 +30,8 @@ fun main() {
     println(course3)
     val businessCourse = Course(2, "Somehow I Manage", "Michael G. Scott", CourseCategory.BUSINESS)
     println(businessCourse)
+
+    // creating Java-defined object
+    val jCourse = JavaCourse(1, "Java Course Name", "Author C. Clarke")
+    println(jCourse)
 }
